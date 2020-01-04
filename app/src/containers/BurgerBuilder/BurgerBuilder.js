@@ -140,6 +140,8 @@ class BurgerBuilder extends Component{
                     loading: false, purchasing: false
                 };
             }));
+
+        this.props.history.push('/checkout');
     }
 
     render(){
