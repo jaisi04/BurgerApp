@@ -11,8 +11,8 @@ const CheckoutSummary = (props) => {
             <h3>You have an amazing taste!</h3>
             <div className = {classes.SummaryLayout}>
                 <Burger ingredients = {props.ingredients} />
-                <Button type = "Danger">Maybe Later</Button>
-                <Button type = "Success">Continue</Button>
+                <Button type = "Danger" clickHandler = {props.onCheckoutCancelled}>Maybe Later</Button>
+                <Button type = "Success" clickHandler = {props.onCheckoutContinued}>Continue</Button>
             </div>
         </div>
     )
