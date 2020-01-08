@@ -102,49 +102,12 @@ class BurgerBuilder extends Component{
 
     modalContinueHandler = () => {
         //alert("Voila! The app development is in progress!")
-        // this.setState(()=> {
-        //     return {
-        //         loading: true
-        //     };
-        // })
-        // const order = {
-        //     ingredients: this.state.ingredients,
-        //     price: this.state.price,
-        //     customerData: {
-        //         name: 'Maddy',
-        //         address: {
-        //             houseNo: 13,
-        //             street: 'ptc',
-        //             pin: 453526,
-        //             country: 'India'
-        //         },
-        //         contact : '9543235321'
-        //     },
-        //     payment: {
-        //         method: 'card',
-        //         status: 'paid'
-        //     },
-        //     delivery: {
-        //         method: 'executive',
-        //         initiated: false
-        //     }
-        // }
-        // axios.post('/orders.json', order)
-        //     .then(this.setState(()=> {
-        //         return {
-        //             loading: false, purchasing: false
-        //         };
-        //     }))
-        //     .catch(this.setState(()=> {
-        //         return {
-        //             loading: false, purchasing: false
-        //         };
-        //     }));
         
         const queryParams = [];
         for(let i in this.state.ingredients){
             queryParams.push(`${encodeURIComponent(i)}=${encodeURIComponent(this.state.ingredients[i])}`)
         }
+        queryParams.push(`${encodeURIComponent('price')}=${encodeURIComponent(this.state.price)}`)
         const queryParamsStr = queryParams.join('&');
 
         this.props.history.push({
@@ -160,7 +123,7 @@ class BurgerBuilder extends Component{
             disabledBtns[key] = (disabledBtns[key] <= ZERO)
         }
         let orderSummary = null;
-        let burger = <Spinner />;
+        let burger = <Spinner/>;
 
         if(this.state.ingredients){
             burger = (
